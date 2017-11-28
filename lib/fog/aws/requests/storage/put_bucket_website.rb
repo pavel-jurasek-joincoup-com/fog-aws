@@ -55,6 +55,20 @@ module Fog
                         </ErrorDocument>
                       DATA
             end
+
+            data << <<-DATA
+                        <RoutingRules>
+                          <RoutingRule>
+                          <Condition>
+                            <HttpErrorCodeReturnedEquals>404</HttpErrorCodeReturnedEquals>
+                          </Condition>
+                          <Redirect>
+                            <HostName>website.zenjob.de</HostName>
+                            <ReplaceKeyPrefixWith>report-404/</ReplaceKeyPrefixWith>
+                          </Redirect>
+                          </RoutingRule>
+                        </RoutingRules>
+                    DATA
           end
 
           data << '</WebsiteConfiguration>'
